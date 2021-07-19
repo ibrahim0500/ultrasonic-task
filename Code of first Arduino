@@ -1,0 +1,43 @@
+int trigger_pin = 9;
+int echo_pin = 8;
+int time;
+int distance; 
+void setup() 
+{
+        Serial.begin (9600); 
+        pinMode (trigger_pin, OUTPUT); 
+        pinMode (echo_pin, INPUT);
+     
+
+}
+void loop() 
+{
+ while (getdistance() > 40) {
+   
+Serial.write('0');
+  }
+int starttime = millis();
+
+
+ while (getdistance() < 40) 
+        {
+        int currenttime = millis();
+   if (currenttime - starttime > 3000){
+    Serial.write('1');
+   }   
+ 
+    
+    }
+
+
+  }
+
+
+  int getdistance(){
+    digitalWrite (trigger_pin, HIGH);
+    delayMicroseconds (100);
+    digitalWrite (trigger_pin, LOW);
+    time = pulseIn (echo_pin, HIGH);
+    distance = (time * 0.034) / 2;
+  return distance; 
+}
