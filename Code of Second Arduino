@@ -1,0 +1,66 @@
+#include <Servo.h>
+Servo servo_1;
+Servo servo_3;
+Servo servo_4;
+Servo servo_5;
+Servo servo_6;
+Servo servo_7;
+
+
+
+
+void setup()
+{
+  Serial.begin (9600); 
+  pinMode(7, OUTPUT);
+    pinMode(7, OUTPUT);
+
+  servo_1.attach(13);
+  servo_3.attach(12);
+  servo_4.attach(11);
+  servo_5.attach(6);
+  servo_6.attach(5);
+  servo_7.attach(4);
+ 	servo_1.write(0);
+    servo_3.write(0);
+    servo_4.write(0);
+    servo_5.write(0);
+    servo_6.write(0);
+    servo_7.write(0);
+}
+
+void loop()
+{
+  
+ while (Serial.read() == '1'){
+
+
+   {
+    servo_1.write(90);
+    servo_3.write(45);
+    servo_4.write(30);
+    servo_5.write(90);
+    servo_6.write(45);
+    servo_7.write(30);
+   digitalWrite (7, HIGH);  
+   digitalWrite (8, LOW);  
+
+       
+ break;
+     
+    }
+   
+	}
+  while (Serial.read() == '0'){
+   digitalWrite (8, HIGH);  
+   digitalWrite (7, LOW);  
+     servo_1.write(0);
+    servo_3.write(0);
+    servo_4.write(0);
+    servo_5.write(0);
+    servo_6.write(0);
+    servo_7.write(0);
+    break;
+}
+}
+  
